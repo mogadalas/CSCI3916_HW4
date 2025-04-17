@@ -65,12 +65,12 @@ router.post('/signup', function(req, res) {
     }
 });
 
-router.post('/signin', function (req, res) {
+router.post('/signin', async function (req, res) {
     var userNew = new User();
     userNew.username = req.body.username;
     userNew.password = req.body.password;
 
-    User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
+    await User.findOne({ username: userNew.username }).select('name username password').exec(function(err, user) {
         if (err) {
             res.send(err);
         }
