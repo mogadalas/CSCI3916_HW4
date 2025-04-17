@@ -65,6 +65,7 @@ router.post('/signup', function(req, res) {
     }
 });
 
+//signin will use a previous username and password
 router.post('/signin', async function (req, res) {
     var userNew = new User();
     userNew.username = req.body.username;
